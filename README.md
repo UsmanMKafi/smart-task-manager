@@ -76,7 +76,7 @@ class TaskManager {
 }
 ```
 
-## 🚀 Installation
+## Installation
 
 1. Clone the repository:
 ```bash
@@ -105,7 +105,7 @@ npx serve
 4. Delete tasks using the × button
 5. Track progress with the visual progress bar
 
-## 🤔 Why This Project?
+## Why This Project?
 
 This project aligns with FlexiSAF Edusoft's mission of enhancing productivity through technology. It solves real-world task management challenges by:
 
@@ -114,7 +114,7 @@ This project aligns with FlexiSAF Edusoft's mission of enhancing productivity th
 - Using local storage for offline functionality
 - Following best practices in code organization and maintainability
 
-## 🔮 Future Improvements
+## Future Improvements
 
 - [ ] Task categories and tags
 - [ ] Due dates and reminders
@@ -124,13 +124,13 @@ This project aligns with FlexiSAF Edusoft's mission of enhancing productivity th
 - [ ] Task search and sorting
 - [ ] Collaborative features
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
-
+[Usman Muhammad Kafi]
 
 ---
 
