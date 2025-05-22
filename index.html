@@ -12,26 +12,49 @@
     </header>
 
     <main>
-        <section id="app">
-            <form id="task-form" class="task-form">
-                <input type="text" id="task-input" placeholder="Add a new task..." required>
-                <button type="submit">Add Task</button>
-            </form>
-            
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="active">Active</button>
-                <button class="filter-btn" data-filter="completed">Completed</button>
+        <section id="app" role="main">
+            <!-- Error Message Container -->
+            <div id="error-container" class="error-container" role="alert" aria-live="polite" hidden></div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="loading-indicator" role="status" aria-live="polite" hidden>
+                <div class="spinner"></div>
+                <span>Loading tasks...</span>
             </div>
 
-            <div class="progress-container">
+            <form id="task-form" class="task-form" role="form" aria-label="Add new task">
+                <input type="text" 
+                       id="task-input" 
+                       placeholder="Add a new task..." 
+                       required
+                       aria-label="Task description"
+                       aria-required="true">
+                <button type="submit" aria-label="Add task">Add Task</button>
+            </form>
+            
+            <div class="filter-buttons" role="toolbar" aria-label="Task filters">
+                <button class="filter-btn active" 
+                        data-filter="all"
+                        aria-pressed="true"
+                        aria-label="Show all tasks">All</button>
+                <button class="filter-btn" 
+                        data-filter="active"
+                        aria-pressed="false"
+                        aria-label="Show active tasks">Active</button>
+                <button class="filter-btn" 
+                        data-filter="completed"
+                        aria-pressed="false"
+                        aria-label="Show completed tasks">Completed</button>
+            </div>
+
+            <div class="progress-container" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
                 <span class="progress-text">0% Complete</span>
             </div>
             
-            <div class="tasks-container">
+            <div class="tasks-container" role="list" aria-label="Task list">
                 <!-- Tasks will be rendered here -->
             </div>
         </section>

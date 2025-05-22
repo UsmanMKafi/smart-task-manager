@@ -19,6 +19,80 @@ A modern, responsive task management web application built with vanilla JavaScri
 | 💾 Data Persistence | Tasks saved in browser's localStorage | JSON & LocalStorage API |
 | 📱 Responsive Design | Mobile-first approach with modern CSS | CSS Grid & Flexbox |
 | 🎨 Modern UI | Clean interface with smooth animations | CSS Transitions & Transforms |
+| 🌙 Dark Mode | Automatic dark mode support | CSS Media Queries |
+| 🎭 Advanced Animations | Smooth transitions and hover effects | CSS Animations & Transitions |
+
+## 🎨 Modern CSS Features
+
+### 1. **CSS Custom Properties (Variables)**
+```css
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --transition-speed: 0.3s;
+    --border-radius: 8px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+```
+
+### 2. **Advanced Animations & Transitions**
+```css
+/* Shimmer effect on progress bar */
+.progress-fill::after {
+    content: '';
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+```
+
+### 3. **Modern Layout Techniques**
+```css
+/* Responsive Grid Layout */
+.tasks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+/* Flexbox for Form Layout */
+.task-form {
+    display: flex;
+    gap: 1rem;
+}
+```
+
+### 4. **Dark Mode Support**
+```css
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #3498db;
+        --background-color: #1a1a1a;
+        --text-color: #f8f9fa;
+    }
+}
+```
+
+### 5. **Custom Scrollbar**
+```css
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+```
 
 ## 🛠️ ES6 Features Used
 
@@ -76,7 +150,7 @@ class TaskManager {
 }
 ```
 
-## Installation
+## 🚀 Installation
 
 1. Clone the repository:
 ```bash
@@ -104,8 +178,9 @@ npx serve
 3. Use the filter buttons to view different task states
 4. Delete tasks using the × button
 5. Track progress with the visual progress bar
+6. Enjoy automatic dark mode support based on system preferences
 
-## Why This Project?
+## 🤔 Why This Project?
 
 This project aligns with FlexiSAF Edusoft's mission of enhancing productivity through technology. It solves real-world task management challenges by:
 
@@ -113,24 +188,28 @@ This project aligns with FlexiSAF Edusoft's mission of enhancing productivity th
 - Implementing modern web technologies for better performance
 - Using local storage for offline functionality
 - Following best practices in code organization and maintainability
+- Offering a responsive and accessible design
+- Supporting both light and dark themes
 
-## Future Improvements
+## 🔮 Future Improvements
 
 - [ ] Task categories and tags
 - [ ] Due dates and reminders
 - [ ] Drag-and-drop task reordering
-- [ ] Dark mode support
+- [ ] Custom theme selection
 - [ ] Export/import functionality
 - [ ] Task search and sorting
 - [ ] Collaborative features
+- [ ] Advanced animations and transitions
+- [ ] Accessibility improvements
 
-## License
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👤 Author
 
-[Usman Muhammad Kafi]
+[Your Name]
 
 ---
 
