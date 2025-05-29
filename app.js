@@ -3,13 +3,11 @@ const ErrorHandler = {
     showError: (message) => {
         const errorContainer = document.getElementById('error-container');
         if (errorContainer) {
-            errorContainer.textContent = message || 'An unknown error occurred.'; // Ensure message is not empty
+            errorContainer.textContent = message || 'An unknown error occurred.';
             errorContainer.hidden = false;
-            console.error('Displayed error:', message);
-            // Automatically hide after 5 seconds
             setTimeout(() => {
                 errorContainer.hidden = true;
-                errorContainer.textContent = ''; // Clear message when hidden
+                errorContainer.textContent = '';
             }, 5000);
         }
     },
@@ -17,24 +15,6 @@ const ErrorHandler = {
     handleStorageError: (error) => {
         console.error('Storage error:', error);
         ErrorHandler.showError('Unable to save or load tasks. Please check your browser storage settings.');
-    }
-};
-
-// Loading state management
-const LoadingState = {
-    show: () => {
-        const loader = document.getElementById('loading-indicator');
-        if (loader) {
-            loader.hidden = false;
-            console.log('Loading indicator shown.');
-        }
-    },
-    hide: () => {
-        const loader = document.getElementById('loading-indicator');
-        if (loader) {
-            loader.hidden = true;
-            console.log('Loading indicator hidden.');
-        }
     }
 };
 
@@ -55,32 +35,35 @@ const debounce = (func, wait) => {
 class TaskManager {
     constructor() {
         this.tasks = [];
-        this.loadTasks().catch(error => {
-            console.error('Failed to load tasks:', error);
-            ErrorHandler.showError('Failed to load tasks. Please refresh the page.');
+        this.init().catch(error => {
+            console.error('Failed to initialize TaskManager:', error);
+            ErrorHandler.showError('Failed to initialize. Please refresh the page.');
         });
     }
 
+    // Initialize the task manager
+    init = async () => {
+        try {
+            await this.loadTasks();
+            renderTasks(this.filterTasks(), this);
+        } catch (error) {
+            console.error('Initialization error:', error);
+            ErrorHandler.showError('Failed to initialize. Please refresh the page.');
+        }
+    };
+
     // Load tasks from localStorage
     loadTasks = async () => {
-        LoadingState.show(); // Show spinner immediately
         try {
-            console.log('Attempting to load tasks from localStorage...');
             const savedTasks = localStorage.getItem('tasks');
-            console.log('Got savedTasks from localStorage:', savedTasks);
             this.tasks = savedTasks ? JSON.parse(savedTasks) : [];
-            console.log('Tasks parsed:', this.tasks);
-            // Ensure updateProgress and initial render happen *after* tasks are loaded
             this.updateProgress();
-            console.log('Progress updated after loading.');
-            // The initial render is now called after the TaskManager is created
+            return this.tasks;
         } catch (error) {
-            console.error('Error loading tasks in loadTasks:', error);
+            console.error('Error loading tasks:', error);
             ErrorHandler.handleStorageError(error);
-            this.tasks = []; // Reset tasks to empty array on error
-        } finally {
-            LoadingState.hide(); // Hide spinner regardless of outcome
-            console.log('loadTasks process finished.');
+            this.tasks = [];
+            throw error;
         }
     };
 
@@ -207,19 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const app = document.getElementById('app');
     const taskManager = new TaskManager();
     let currentFilter = 'all';
-
-    // Handle potential errors during initial rendering or progress update
-    try {
-        // Initial render needs to happen AFTER tasks are potentially loaded asynchronously
-        // The renderTasks call was moved outside the loadTasks method, but still needs taskManager instance.
-        // Let's ensure initial render happens after loadTasks completes (implicitly via the TaskManager constructor calling loadTasks)
-        // The previous fix where renderTasks is called at the end of DOMContentLoaded is correct for initial display.
-        renderTasks(taskManager.filterTasks(), taskManager);
-    } catch (renderError) {
-        console.error('Error during initial render or progress update:', renderError);
-        ErrorHandler.showError('Failed to display tasks. Please refresh the page.');
-        LoadingState.hide(); // Ensure spinner is hidden even if rendering fails
-    }
 
     // Form submission handler
     const taskForm = document.getElementById('task-form');

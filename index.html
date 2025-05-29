@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,12 +18,6 @@
         <section id="app" role="main">
             <!-- Error Message Container -->
             <div id="error-container" class="error-container" role="alert" aria-live="polite" hidden></div>
-
-            <!-- Loading Indicator -->
-            <div id="loading-indicator" class="loading-indicator" role="status" aria-live="polite" hidden>
-                <div class="spinner"></div>
-                <span>Loading tasks...</span>
-            </div>
 
             <form id="task-form" class="task-form" role="form" aria-label="Add new task">
                 <input type="text" 

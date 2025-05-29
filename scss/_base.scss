@@ -1,0 +1,124 @@
+// Reset default styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  line-height: 1.6;
+  color: $text-color;
+  background: $background-color;
+  min-height: 100vh;
+  padding: $container-padding;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: $font-weight-semibold;
+    color: $primary-color;
+    margin-bottom: 0.5rem;
+  }
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  
+  &-track {
+    background: $background-color;
+    border-radius: 4px;
+  }
+  
+  &-thumb {
+    background: $primary-color;
+    border-radius: 4px;
+    
+    &:hover {
+      background: $secondary-color;
+    }
+  }
+}
+
+// Focus styles
+:focus {
+  outline: none;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: $focus-ring;
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #0f172a;
+    --text-color: #f8fafc;
+  }
+  
+  body {
+    background: $background-color;
+    color: $text-color;
+  }
+  
+  .task-form,
+  .progress-container,
+  .task-item {
+    background: #1e293b;
+  }
+  
+  .task-form input {
+    background: #334155;
+    color: $text-color;
+    border-color: #475569;
+    
+    &::placeholder {
+      color: rgba($text-color, 0.5);
+    }
+  }
+  
+  .task-text.completed {
+    color: #94a3b8;
+  }
+  
+  .filter-btn {
+    background: #1e293b;
+    border-color: #475569;
+    color: #94a3b8;
+    
+    &:hover {
+      border-color: $primary-color;
+    }
+    
+    &.active {
+      background: $primary-color;
+      color: white;
+    }
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+} 
