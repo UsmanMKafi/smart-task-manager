@@ -21,6 +21,7 @@ A modern, responsive task management web application built with vanilla JavaScri
 | 🎨 Modern UI | Clean interface with smooth animations | CSS Transitions & Transforms |
 | 🌙 Dark Mode | Automatic dark mode support | CSS Media Queries |
 | 🎭 Advanced Animations | Smooth transitions and hover effects | CSS Animations & Transitions |
+| 🎨 SASS/SCSS Implementation | Advanced styling with SASS features | SASS/SCSS |
 
 ## 🎨 Modern CSS Features
 
@@ -210,6 +211,99 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 [Your Name]
+
+## 🎨 SASS/SCSS Implementation
+
+The project uses SASS/SCSS for advanced styling capabilities:
+
+### Structure
+```
+scss/
+├── _variables.scss    # Global variables (colors, spacing, etc.)
+├── _mixins.scss      # Reusable mixins
+├── _base.scss        # Base styles and resets
+├── _components.scss  # Component-specific styles
+└── main.scss         # Main file that imports all partials
+```
+
+### SASS Features Used
+- **Variables**: For consistent colors, spacing, and typography
+- **Mixins**: For reusable style patterns
+- **Nesting**: For cleaner, more maintainable CSS
+- **Functions**: For color manipulation and calculations
+- **Partials**: For modular code organization
+- **Dark Mode**: Using SASS variables for theme switching
+
+### Key SASS Implementations
+1. **Color Management**
+   ```scss
+   $primary-color: #4f46e5;
+   $secondary-color: #818cf8;
+   $text-color: #1e293b;
+   ```
+
+2. **Responsive Mixins**
+   ```scss
+   @mixin mobile {
+     @media (max-width: $breakpoint-sm) {
+       @content;
+     }
+   }
+   ```
+
+3. **Component Styling**
+   ```scss
+   .task-item {
+     @include card-style;
+     &:hover {
+       transform: translateY(-2px);
+     }
+   }
+   ```
+
+4. **Dark Mode**
+   ```scss
+   @media (prefers-color-scheme: dark) {
+     :root {
+       --background-color: #0f172a;
+       --text-color: #f8fafc;
+     }
+   }
+   ```
+
+## 🚀 Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the SASS compiler in watch mode:
+   ```bash
+   npm run sass:watch
+   ```
+4. Open `index.html` in your browser
+
+## 🚀 Development
+
+- **SASS Compilation**: 
+  - `npm run sass` - One-time compilation
+  - `npm run sass:watch` - Watch mode for development
+
+## 🚀 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## 🚀 Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
 ---
 
